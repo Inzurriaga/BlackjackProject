@@ -16,6 +16,19 @@ public class Player extends Character {
 		} 
 		return false;
 	}
+	
+	public void playerOutcome(int num) {
+		switch(num) {
+			case 1:
+				this.wallet += this.bet;
+				break;
+			case 2:
+				this.wallet -= this.bet;
+				break;
+			default:
+		}
+		this.bet = 0;
+	}
 
 	public int getWallet() {
 		return wallet;

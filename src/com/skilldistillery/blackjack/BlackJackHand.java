@@ -8,14 +8,26 @@ public class BlackJackHand extends Hand {
 
 	@Override
 	public int getHandValue() {
-		return 8;
+		int sum = 0;
+		for(Card card : this.cards) {
+			sum += card.getValue();
+		}
+		return sum;
 	}
 
 	public boolean isBlackJack() {
-		return true;
+		int sum = getHandValue();
+		if(sum == 21) {
+			return true;
+		}
+		return false;
 	}
 
 	public boolean isBust() {
+		int sum = getHandValue();
+		if(sum < 22) {
+			return false;
+		}
 		return true;
 	}
 

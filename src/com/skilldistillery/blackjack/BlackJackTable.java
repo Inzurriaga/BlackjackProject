@@ -76,18 +76,22 @@ public class BlackJackTable {
 	public void playerPlay() {
 		for (Character player : playersInGame) {
 			if (player instanceof Player) {
-				System.out.println(player.getName() + " pick an option");
 				int playerChoice = 1;
 				do {
+					System.out.println(player.getName() + " pick an option");
+					System.out.println(player.getHand());
 					playerPlayOption();
 					try {
 						playerChoice = input.nextInt();
 						switch (playerChoice) {
 							case 1:
 								player.addCardToHand(deck.dealCard());
+								if(player.getHand().isBust()) {
+									System.out.println("you bust your hand value " + player.getHand().getHandValue());
+								}
 								break;
 							case 2:
-								System.out.print("next player turn");
+								System.out.println("next player turn");
 								break;
 							default:
 								System.out.println("Enter a valid response");
@@ -118,11 +122,15 @@ public class BlackJackTable {
 				System.out.println(character.getName() + " how much do you want to bet: ");
 				playersbet = input.nextInt();
 				compareBetToWallet = ((Player) character).compareBetToWallet(playersbet);
+				if(!compareBetToWallet) {
+					System.out.println("not enough money in wallet to bet amount");
+					continue;
+				}
 				break;
 			} catch (InputMismatchException e) {
 				System.err.println("enter a valid response");
 			}
-		} while (compareBetToWallet);
+		} while (!compareBetToWallet);
 	}
 
 }
