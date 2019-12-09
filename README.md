@@ -61,7 +61,7 @@ BlackjackHand extends --- Hand
 
 Both Player and Dealer extends the Character class due to both having a hand and name.
 
-Player --- Character
+Player --- Character <br />
 Dealer --- Character
 
 Then there's the BlackJackTable which in its field holds the Deck and a List of Character.
