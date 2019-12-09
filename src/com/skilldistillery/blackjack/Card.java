@@ -13,6 +13,10 @@ public class Card {
 		return this.rank.getValue();
 	}
 	
+	public String cardSymbol() {
+		return this.rank.getSymbol() + this.suit.getSymbol();
+	}
+	
 	public String toString() {
 		return this.rank + " of " + this.suit;
 	}

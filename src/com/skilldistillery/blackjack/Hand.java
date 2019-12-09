@@ -20,6 +20,14 @@ public abstract class Hand {
 
 	public abstract int getHandValue();
 
+	public List<Card> getCards() {
+		return cards;
+	}
+
+	public void setCards(List<Card> cards) {
+		this.cards = cards;
+	}
+
 	@Override
 	public String toString() {
 		return cards.toString();

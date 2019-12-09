@@ -3,7 +3,6 @@ package com.skilldistillery.blackjack;
 public class Character {
 	private String name;
 	private BlackJackHand hand;
-//	private boolean split;
 
 	public Character(String name) {
 		this.name = name;
