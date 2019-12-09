@@ -72,9 +72,16 @@ public class BlackJackTable {
 	}
 
 	public void dealCards() {
+		if(this.deck.cardsLeftInDeck() < 17) {
+			this.deck = new Deck();
+			this.deck.shuffle();
+		}
 		System.out.println(this.playersInGame.get(this.playersInGame.size() - 1) + " is dealing out cards");
 		for (int i = 0; i < 2; i++) {
 			for (Character player : playersInGame) {
+				if(i == 0) {
+					player.getHand().clear();
+				}
 				player.addCardToHand(this.deck.dealCard());
 			}
 		}
@@ -115,6 +122,7 @@ public class BlackJackTable {
 				if(this.playersInGame.get(i).getHand().isBust()) {
 					System.out.println("Dealer bust");
 				}
+				displayCards(i);
 			}
 		}
 	}
@@ -127,12 +135,13 @@ public class BlackJackTable {
 			if(this.playersInGame.get(this.playersInGame.size() - 1).getHand().isBust()) {
 				((Player) this.playersInGame.get(i)).addWinnings();
 			}else if (bust || player < dealersCardValue) {
+				System.out.println(this.playersInGame.get(i).getName() + " lost " + ((Player)this.playersInGame.get(i)).getBet());
 				((Player) this.playersInGame.get(i)).addlost();
 			} else if (player > dealersCardValue) {
 				((Player) this.playersInGame.get(i)).addWinnings();
-				System.out.println("congrats you won");
+				System.out.println(this.playersInGame.get(i).getName() + " won " + ((Player)this.playersInGame.get(i)).getBet());
 			} else {
-				System.out.println("you are tie");
+				System.out.println(this.playersInGame.get(i).getName() + " tie with Dealer");
 			}
 			if(((Player) this.playersInGame.get(i)).getWallet() == 0) {
 				this.characters.remove(i);
@@ -173,8 +182,8 @@ public class BlackJackTable {
 					System.out.print(" |  | ");
 				}
 			}
+			System.out.println();
 		}
-		System.out.println();
 	}
 
 }

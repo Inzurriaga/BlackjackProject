@@ -15,7 +15,7 @@ public abstract class Hand {
 	}
 
 	public void clear() {
-		this.cards = new ArrayList<>();
+		this.cards.clear();
 	}
 
 	public abstract int getHandValue();
