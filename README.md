@@ -43,6 +43,35 @@ If player beats the dealer or the dealer bust they will be prompted that they wo
 $ bill lost 100
 ```
 
+### Structure
+
+Within the application  contains 11 classes, one to run the application, 2 Enum, 1 abstract, and the rest just normal classes of java.
+
+The first class Card implements the Rank and Suit Enum.
+
+Card implements --- Rank, Suit
+
+The Deck class which creates a new List of Card when initialize.
+
+Deck
+
+The abstract class Hand holds an List of Card objects then gets extended to the  BlackjackHand class.
+
+BlackjackHand extends --- Hand
+
+Both Player and Dealer extends the Character class due to both having a hand and name.
+
+Player --- Character
+Dealer --- Character
+
+Then there's the BlackJackTable which in its field holds the Deck and a List of Character.
+
+BlackJackTable
+
+And Lastly the BlackJackApp which holds the BlackJackTable.
+
+BlackJackApp
+
 #### Concepts
 
 * Enum
